@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Problem Index 0</title>
+        <style>
+            @keyframes hide {
+                100%{
+                    transform: translateY(-50px);
+                    filter: opacity(0);
+                }
+            }
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 0;
+            }
+            #start{
+                height: 100%;
+                width: 100%;
+                position: fixed;
+                background-color: #fff;
+            }
+            p, span, h1, h2, h3{
+                margin-left: 20px;
+            }
+            #example{
+                float: right;
+                right: 50px;
+                position: absolute;
+            }
+            #startBTN{
+                width: 250px;
+                background-color: #1a5ded;
+                border-radius: 15px;
+                padding: 15px;
+                color: #fff;
+                text-align: center;
+                font-size: 20px;
+                margin: 20px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+            #startBTN:hover{
+                background-color: #0037db;
+            }
+            #content{
+                position: absolute;
+                width: 100%;
+
+            }
+            exponent{
+                position: relative;
+                bottom: 1.5ex;
+                font-size: 50%;
+            }
+            #explainGraph{
+                margin-left: 20px;
+                position: fixed;
+                right: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <!--<p>LET n = numbers of smaller squares along the diagonal (the squares that has inner axis).</p>-->
+            <h1>Explain 1<exponent>3</exponent> + 2<exponent>3</exponent> + 3<exponent>3</exponent> + ... + n<exponent>3</exponent> = (1 + 2 + 3 + ... + n)<exponent>2</exponent></h1>
+            <div id="explainGraph"></div>
+            <div style="width: calc(100% - 450px);">
+                <h2>Area of the small squares</h2>
+                <p>The width of the smaller squares along the diagonal (top right to bottom left) is n</p>
+                <h2>Area of the large square</h2>
+            </div>
+        </div>
+        <div id="start">
+            <h1>Math Problem of Square Patterns</h1>
+            <h2>Mathematics 9: Problem Index 0</h2>
+            <div style="position: absolute; bottom: 0;">
+                <p>Coby Qiu</p>
+                <div id="startBTN">Start</div>
+            </div>
+            <div id="example"></div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
