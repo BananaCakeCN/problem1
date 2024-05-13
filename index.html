@@ -58,6 +58,9 @@
                 position: fixed;
                 right: 20px;
             }
+            td, th{
+                border: 1px solid #000;
+            }
         </style>
     </head>
     <body>
@@ -67,8 +70,176 @@
             <div id="explainGraph"></div>
             <div style="width: calc(100% - 450px);">
                 <h2>Area of the small squares</h2>
-                <p>The width of the smaller squares along the diagonal (top right to bottom left) is n</p>
+                <p>The width of the smaller squares along the diagonal (top right to bottom left) is the number of itself. For examples the first square has the width of 1, the second square has the width of 2. Which means the area of the small square is (it's number)<exponent>2</exponent></p>
                 <h2>Area of the large square</h2>
+                <p>The perimeter of the large square equals the sum of smaller squares' perimeter along the diagonal. Because the large square's length of each side is the combine of the small square's side length.</p>
+                <p>the label on the smaller squares along the diagonal is their width</p>
+                <button onclick="showHow()" style="margin-left: 20px;">show how in the graph</button>
+                <p>which really means that the area of the larger square is (1 + 2 + ... + n)<exponent>2</exponent></p>
+                <p>Now take a look again at the smaller squares and the top and left part (darker color than the diagonal squares) to it.</p>
+                <p>Look at the area of the darker part and the lighter part, do you find the relationship between them?</p>
+                <p>The first square has the area of one with 0 darker area that on it's left and top. The second square has the area of 4, and the nearby darker area is also 4. The third square has the area of 9, and the nearby darker area is 18...</p>
+                <table style="margin-left: 20px; border: 1px solid #000;">
+                    <tr>
+                        <th>lighter area</th>
+                        <th>darker area (to it's left and top)</th>
+                        <th>lighter area + darker area</th>
+                        <th>(lighter area + darker area)/(lighter area)</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>8</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>18</td>
+                        <td>27</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>48</td>
+                        <td>64</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>100</td>
+                        <td>125</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>36</td>
+                        <td>180</td>
+                        <td>216</td>
+                        <td>6</td>
+                    </tr>
+                </table>
+                <p>As you can see, the lighter area is (it's number)<exponent>2</exponent>, it's lighter area with it's darker area is exactly (it's number)<exponent>2</exponent> * it's number, which is (it's number)<exponenet>3</exponenet>.</p>
+                <h2>Square and it's recursion</h2>
+                <svg style="margin-left: 20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="361.4087" height="170.82096" viewBox="0,0,361.4087,170.82096"><g transform="translate(0.11923,-0.83173)"><g data-paper-data="{&quot;isPaintingLayer&quot;:true}" fill-rule="nonzero" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" style="mix-blend-mode: normal"><path d="M1.03947,61.67757v-27.17508h88.38023v27.17508z" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="butt"/><text transform="translate(5.00756,53.98221) scale(0.5,0.5)" font-size="40" xml:space="preserve" fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"  font-weight="normal" text-anchor="start" style="mix-blend-mode: normal"><tspan x="0" dy="0">function</tspan></text><path d="M99.15957,48.21044c0,-7.5707 6.13726,-13.70795 13.70795,-13.70795c7.5707,0 13.70795,6.13725 13.70795,13.70795c0,7.5707 -6.13726,13.70796 -13.70795,13.70796c-7.5707,0 -13.70795,-6.13726 -13.70795,-13.70796z" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="butt"/><text transform="translate(107.09575,53.26074) scale(0.5,0.5)" font-size="40" xml:space="preserve" fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="0" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"  font-weight="normal" text-anchor="start" style="mix-blend-mode: normal"><tspan x="0" dy="0">n</tspan></text><text transform="translate(0.03948,14.63885) scale(0.31741,0.31741)" font-size="40" xml:space="preserve" fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-weight="normal" text-anchor="start" style="mix-blend-mode: normal"><tspan x="0" dy="0">Function that calculate</tspan><tspan x="0" dy="46.15px">1cubed + 2cubed + ... +n cubed</tspan></text><path d="M60.03948,66.90269v24" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round"/><text transform="translate(86.50757,152.9115) scale(0.41129,0.41129)" font-size="40" xml:space="preserve" fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-weight="normal" text-anchor="start" style="mix-blend-mode: normal"><tspan x="0" dy="0">return n cubed + [function](n-1)</tspan></text><path d="M224.53948,158.4027h113" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round"/><path d="M284.53948,159.9027v10.5h75.5v-125l-227,0" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round"/><text transform="translate(254.50756,63.4115) scale(0.41129,0.41129)" font-size="40" xml:space="preserve" fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-weight="normal" text-anchor="start" style="mix-blend-mode: normal"><tspan x="0" dy="0">n-1</tspan></text><text transform="translate(39.03948,109.4027) scale(0.5,0.5)" font-size="40" xml:space="preserve" fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-weight="normal" text-anchor="start" style="mix-blend-mode: normal"><tspan x="0" dy="0">n=1?</tspan></text><path d="M58.03947,115.90269l-20.5,20.5" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round"/><text transform="translate(35.23687,127.15269) scale(0.34832,0.34832)" font-size="40" xml:space="preserve" fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-weight="normal" text-anchor="start" style="mix-blend-mode: normal"><tspan x="0" dy="0">y</tspan></text><text transform="translate(6.00757,152.9115) scale(0.41129,0.41129)" font-size="40" xml:space="preserve" fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-weight="normal" text-anchor="start" style="mix-blend-mode: normal"><tspan x="0" dy="0">return 1</tspan></text><path d="M63.53948,115.9027l20.5,20.5" data-paper-data="{&quot;index&quot;:null}" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round"/><text transform="translate(78.23687,127.6527) scale(0.34832,0.34832)" font-size="40" xml:space="preserve" fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-weight="normal" text-anchor="start" style="mix-blend-mode: normal"><tspan x="0" dy="0">n</tspan></text></g></g></svg>
+                <p>The total area is the sum of the small square, the area to it's left and top, and last total area.</p>
+                <xmp>
+    #Python sample
+    def function(n):
+        if n == 1:
+            return 1
+        return n**3 + function(n-1)
+                </xmp>
+                <h2 id="scroll">How are they equal</h2>
+                <p>Let's say we have a square that has 6 smaller squares along the diagonal. It is the same as the graph representing on the right 1<exponent>3</exponent> + 2<exponent>3</exponent> + 3<exponent>3</exponent> + 4<exponent>3</exponent> + 5<exponent>3</exponent> + 6<exponent>3</exponent>, which represent a square that has an area of 6<exponent>2</exponent> plus the area to it's left and top and it's recursion area.</p>
+                <p>Obviously that the graph is a square. It is easy to tell a area of square if you know the width. You combine the width of the smaller squares along the diagonal as I said and get the value of (1 + 2 + 3 + 4 + 5 + 6). And you times itself, the total area is (1 + 2 + 3 + 4 + 5 + 6)<exponent>2</exponent></p>
+                <p>The area of square remains the same, meaning that 1<exponent>3</exponent> + 2<exponent>3</exponent> + 3<exponent>3</exponent> + 4<exponent>3</exponent> + 5<exponent>3</exponent> + 6<exponent>3</exponent> equals (1 + 2 + 3 + 4 + 5 + 6)<exponent>2</exponent></p>
+                <p>The example is suitable for all the cases that is 1<exponent>3</exponent> + 2<exponent>3</exponent> + 3<exponent>3</exponent> + ... + n<exponent>3</exponent></p>
+                <h2>Draw this square</h2>
+                <p>Using HTML+Js+Css+svg</p>
+                <xmp>
+    function drawPattern(n, singleW, label){
+        var res = '';
+        for(var i = 1; i <= n; i++){
+            for(var j = (i*(i-1)/2)*singleW - i * singleW; j >= 0; j -= singleW * i){
+                res += `
+                <rect class="graphSub` + i + `" stroke-width="1" stroke="#000" fill="#fff" x="` + j + `" y="` + (i*(i-1)/2)*singleW + `" width="` + i*singleW + `" height="` + i*singleW + `"/>
+                <rect class="graphSub` + i + `" stroke-width="1" stroke="#000" fill="#fff" x="` + (i*(i-1)/2)*singleW + `" y="` + j + `" width="` + i*singleW + `" height="` + i*singleW + `"/>
+                `
+            }
+            if(i % 2 == 0){
+                res += `
+                <rect class="graphSub` + i + `" stroke-width="1" stroke="#000" fill="#fff" x="0" y="` + (i*(i-1)/2)*singleW + `" width="` + i*singleW/2 + `" height="` + i*singleW + `"/>
+                <rect class="graphSub` + i + `" stroke-width="1" stroke="#000" fill="#fff" x="` + (i*(i-1)/2)*singleW + `" y="0" width="` + i*singleW + `" height="` + i*singleW/2 + `"/>
+                `
+            }
+            res += `
+            <rect class="graphMain` + i + `" stroke-width="3" stroke="#000" fill="#fff" x="` + (i*(i-1)/2)*singleW + `" y="` + (i*(i-1)/2)*singleW + `" width="` + i*singleW + `" height="` + i*singleW + `"/>
+            <path stroke="#000" stroke-width="2" d="M0 ` + (i*(i-1)/2)*singleW + ` L` + (i*(i-1)/2)*singleW + ` ` + (i*(i-1)/2)*singleW + `"/>
+            <path stroke="#000" stroke-width="2" d="M` + (i*(i-1)/2)*singleW + ` 0 L` + (i*(i-1)/2)*singleW + ` ` + (i*(i-1)/2)*singleW + `"/>
+            `
+            if(label){
+                res += `
+                <text x="` + ((i*(i-1)/2)*singleW+3) + `" y="` + ((i*(i-1)/2)*singleW+15) + `" class="label">` + i + `</text>
+                `
+            }
+            for(var j = singleW; j < i * singleW; j += singleW){
+                res += `
+                <path stroke="#000" stroke-width="2" d="M` + ((i*(i-1)/2)*singleW + j) + ` ` + (i*(i-1)/2)*singleW + ` L` + ((i*(i-1)/2)*singleW + j) + ` ` + ((i*(i-1)/2)*singleW + i * singleW) + `"/>
+                <path stroke="#000" stroke-width="2" d="M` + (i*(i-1)/2)*singleW + ` ` + ((i*(i-1)/2)*singleW + j) + ` L` + ((i*(i-1)/2)*singleW + i * singleW) + ` ` + ((i*(i-1)/2)*singleW + j) + `"/>
+                `
+            }
+        }
+        return '<svg style="border: 3px solid #000;" width="' + ((1+n)*n/2)*singleW + '" height="' + ((1+n)*n/2)*singleW + '">' + res + '</svg>';
+    }
+                </xmp>
+                <span>Example. n = </span>
+                <input type="number" id="number1" value="5">
+                <div id="example1" style="margin-left: 20px;"></div>
+                <p>Using HTML+Js+Css+Canvas</p>
+                <xmp>
+    function drawPatternCVS(n, singleW, label, canvas){
+        canvas.width = ((1+n)*n/2)*singleW;
+        canvas.height = ((1+n)*n/2)*singleW;
+        draw = canvas.getContext('2d');
+        draw.fillStyle = '#000';
+        draw.strokeStyle = '#000';
+        for(var i = 1; i <= n; i++){
+            draw.lineWidth = 1;
+            for(var j = (i*(i-1)/2)*singleW - i * singleW; j >= 0; j -= singleW * i){
+                draw.strokeRect(j, (i*(i-1)/2)*singleW, i*singleW, i*singleW);
+                draw.strokeRect((i*(i-1)/2)*singleW, j, i*singleW, i*singleW);
+            }
+            if(i % 2 == 0){
+                draw.strokeRect(0, (i*(i-1)/2)*singleW, i*singleW/2, i*singleW);
+                draw.strokeRect((i*(i-1)/2)*singleW, 0, i*singleW, i*singleW/2);
+            }
+            draw.lineWidth = 3;
+            draw.strokeRect((i*(i-1)/2)*singleW, (i*(i-1)/2)*singleW, i*singleW, i*singleW);
+            draw.lineWidth = 2;
+            draw.beginPath();
+            draw.moveTo(0, (i*(i-1)/2)*singleW);
+            draw.lineTo((i*(i-1)/2)*singleW, (i*(i-1)/2)*singleW);
+            draw.moveTo((i*(i-1)/2)*singleW, 0);
+            draw.lineTo((i*(i-1)/2)*singleW, (i*(i-1)/2)*singleW);
+            draw.stroke();
+            if(label){
+                draw.fillText(i, ((i*(i-1)/2)*singleW+3), ((i*(i-1)/2)*singleW+15))
+            }
+            for(var j = singleW; j < i * singleW; j += singleW){
+                draw.beginPath();
+                draw.moveTo(((i*(i-1)/2)*singleW + j), (i*(i-1)/2)*singleW);
+                draw.lineTo(((i*(i-1)/2)*singleW + j), ((i*(i-1)/2)*singleW + i * singleW));
+                draw.moveTo((i*(i-1)/2)*singleW, ((i*(i-1)/2)*singleW + j));
+                draw.lineTo(((i*(i-1)/2)*singleW + i * singleW), ((i*(i-1)/2)*singleW + j));
+                draw.stroke();
+            }
+        }
+    }
+                </xmp>
+                <span>Example. n = </span><input type="number" id="number2" value="5">
+                <canvas id="example2" style="margin-left: 20px;"></canvas>
+                <h2>Simplifing the quation</h2>
+                <p>1<exponent>3</exponent> + 2<exponent>3</exponent> + 3<exponent>3</exponent> + ... + n<exponent>3</exponent></p>
+                <p>= (1 + 2 + 3 + ... + n)<exponent>2</exponent></p>
+                <p>= ((1 + n)n / 2)<exponent>2</exponent></p>
+                <p>Why step 2?</p>
+                <p>let's set n = 4, transform (1 + 2 + 3 + 4)<exponent>2</exponent> to graph.</p>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="95.29713" height="80.1492" viewBox="0,0,95.29713,80.1492"><g transform="translate(-192.0171,-161.3491)"><g data-paper-data="{&quot;isPaintingLayer&quot;:true}" fill="none" fill-rule="nonzero" stroke="#000000" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" style="mix-blend-mode: normal"><path d="M231.31126,170.64603c0,-4.58226 3.71466,-8.29692 8.29692,-8.29692c4.58226,0 8.29692,3.71466 8.29692,8.29692c0,4.58226 -3.71466,8.29691 -8.29692,8.29691c-4.58226,0 -8.29692,-3.71465 -8.29692,-8.29691z"/><path d="M218.99595,189.35398c0,-4.58226 3.71466,-8.29692 8.29692,-8.29692c4.58226,0 8.29692,3.71466 8.29692,8.29692c0,4.58226 -3.71466,8.29692 -8.29692,8.29692c-4.58226,0 -8.29692,-3.71466 -8.29692,-8.29692z"/><path d="M244.41022,189.23827c0,-4.58226 3.71466,-8.29692 8.29692,-8.29692c4.58226,0 8.29692,3.71466 8.29692,8.29692c0,4.58226 -3.71466,8.29692 -8.29692,8.29692c-4.58226,0 -8.29692,-3.71466 -8.29692,-8.29692z"/><path d="M206.12856,210.74473c0,-4.58226 3.71466,-8.29692 8.29692,-8.29692c4.58226,0 8.29692,3.71466 8.29692,8.29692c0,4.58226 -3.71466,8.29692 -8.29692,8.29692c-4.58226,0 -8.29692,-3.71466 -8.29692,-8.29692z"/><path d="M231.54283,210.62902c0,-4.58226 3.71466,-8.29692 8.29692,-8.29692c4.58226,0 8.29692,3.71466 8.29692,8.29692c0,4.58226 -3.71466,8.29692 -8.29692,8.29692c-4.58226,0 -8.29692,-3.71466 -8.29692,-8.29692z"/><path d="M257.3635,210.46077c0,-4.58226 3.71465,-8.29692 8.29692,-8.29692c4.58226,0 8.29692,3.71466 8.29692,8.29692c0,4.58226 -3.71466,8.29692 -8.29692,8.29692c-4.58226,0 -8.29692,-3.71466 -8.29692,-8.29692z"/><path d="M218.48546,232.13548c0,-4.58226 3.71465,-8.29692 8.29691,-8.29692c4.58226,0 8.29692,3.71466 8.29692,8.29692c0,4.58226 -3.71466,8.29692 -8.29692,8.29692c-4.58226,0 -8.29691,-3.71466 -8.29691,-8.29692z"/><path d="M243.89972,232.01977c0,-4.58226 3.71465,-8.29692 8.29691,-8.29692c4.58226,0 8.29692,3.71466 8.29692,8.29692c0,4.58226 -3.71466,8.29692 -8.29692,8.29692c-4.58226,0 -8.29691,-3.71466 -8.29691,-8.29692z"/><path d="M269.7204,231.85152c0,-4.58226 3.71465,-8.29692 8.29692,-8.29692c4.58226,0 8.29692,3.71466 8.29692,8.29692c0,4.58226 -3.71466,8.29692 -8.29692,8.29692c-4.58226,0 -8.29692,-3.71466 -8.29692,-8.29692z"/><path d="M193.01711,232.20139c0,-4.58226 3.71466,-8.29692 8.29692,-8.29692c4.58226,0 8.29692,3.71466 8.29692,8.29692c0,4.58226 -3.71466,8.29692 -8.29692,8.29692c-4.58226,0 -8.29692,-3.71466 -8.29692,-8.29692z"/></g></g></svg>
+                <p>What do you notice?</p>
+                <p>The numbers of round pattern is 1 + 2 + 3 + 4 = 10. Can we find the result by using another way?</p>
+                <p>The formula of getting the area of trapezoid is (top length + bottom length) * height / 2, in this case the top length is 1 and height always remains botton length.</p>
+                <p>This gives the equation of (1 + 4) * 4 / 2, also the result of 10. Now we replace 4 to n and get the expression of (1 + n)n / 2.</p>
+                <p>Now stick the formula fx"=((A2+1)*A2/2)^2" into Excel and check the answers.</p>
+                <iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https://problem1.bananacake.top/Problem1.xlsx" width="100%" height="500" style="margin-left: 20px;"></iframe>
+                <p>1<exponent>3</exponent> + 2<exponent>3</exponent> + 3<exponent>3</exponent> = 36</p>
+                <p>1<exponent>3</exponent> + 2<exponent>3</exponent> + 3<exponent>3</exponent> + 4<exponent>3</exponent> = 100</p>
+                <p>1<exponent>3</exponent> + 2<exponent>3</exponent> + 3<exponent>3</exponent> + 4<exponent>3</exponent> + 5<exponent>3</exponent> = 255</p>
+                <p>1<exponent>3</exponent> + 2<exponent>3</exponent> + 3<exponent>3</exponent> + 4<exponent>3</exponent> + 5<exponent>3</exponent> + 6<exponent>3</exponent> = 441</p>
             </div>
         </div>
         <div id="start">
